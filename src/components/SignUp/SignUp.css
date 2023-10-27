@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Belleza&family=Noto+Sans:wght@100;200;300;400;500;600;700&display=swap');
+
+.signUp-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.sign-up-form{
+    display: flex;
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-up-form-container{
+    width: 362px;
+    height: 498px;
+}
+.sign-up-form-container h2{
+    width: 280px;
+    height: 51px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 700;
+    font-size: 37px;
+}
+.sign-up-form-container p{
+    margin-left: auto;
+    margin-right: auto;
+    height: 24px;
+    font-size: 16px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+}
+
+.sign-up-form-inputs {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.sign-up-form-inputs label{
+    margin-left: 5px;
+    font-size: 14px;
+    font-family:'Noto Sans', sans-serif ;
+    font-weight: 500;
+}
+.sign-up-form-inputs .input-fields{
+    padding: 8px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid var(--divider-color);
+    margin-bottom: 10px;
+}
+.check-box-field{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.check-box-field p{
+    text-align: right;
+    font-size: 12px;
+}
+
+
+.btn-primary{
+    margin-top: 30px;
+    background-color: var(--primary-color);
+    height: 50px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--white-color);
+    font-family:'Noto Sans', sans-serif ;
+    border: none;
+}
+.btn-white{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    background-color: var(--white-color);
+    height: 50px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-primary);
+    font-family:'Noto Sans', sans-serif ;
+    border: 1px solid var(--divider-color); 
+}
+.sign-up-form-inputs input:hover{
+
+    border-color: rgba(129, 140, 248);
+    background-color: #fff;
+    box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+}
+.sign-up-form-inputs input:focus{
+    border: none;
+    border-color: rgba(129, 140, 248);
+    background-color: #fff;
+    box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+}
+.image-container {
+    width: 50%;
+}
+.image-container img{
+    width: auto;
+    min-width: 50vw;
+    min-height: 100vh;
+    object-fit: cover;
+}
+
+
+@media screen and (max-width: 700px) {
+    .signUp-container{
+        overflow: none;
+       width: 100%;
+    }
+    .sign-up-form-container{
+        width: 85vw;
+    }
+    .sign-up-form-inputs{
+        margin-top: 35px;
+    }
+    .check-box-field input {
+        display: none;
+    }
+    .check-box-field label {
+        display: none;
+    }
+    .check-box-field p {
+       width:250px !important;
+    }
+    .image-container{
+        display: none;
+    }
+}

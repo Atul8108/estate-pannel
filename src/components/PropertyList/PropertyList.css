@@ -1,0 +1,24 @@
+.react-multi-carousel-list{
+    height: 100%;
+}
+
+.react-multi-carousel-item{
+    width: 300px !important;
+}
+
+.property-card {
+    width: 250px;
+    height: 200px;
+    /* border: 2px solid white; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-right: 10px;
+
+}
+
+.image img{
+    border-radius: 10px;
+    width: 100%;
+}
+

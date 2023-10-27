@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Belleza&family=Noto+Sans:wght@100;200;300;400;500;600;700&display=swap");
+
+* {
+  /* margin: 0px !important; */
+  padding: 0px;
+  font-family: "Noto Sans", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+span {
+  margin: 0 !important;
+  color: var(--Text-color-dark);
+}
+:root {
+  --primary-color: #475be8;
+  --white-color: #fcfcfc;
+  --secondary-color: #dadefa;
+  --text-primary-color: #11142d;
+  --second-text-color: #808191;
+  --bg-color: #f4f4f4;
+  --grey: #e4d8ef;
+  --divider-color: #e4e4e4;
+  --secondary-color: #cfc8ff;
+  --hover-color: #f7f7f7;
+  --bg-color-dark: #111315;
+  --black-color: #1a1d1f;
+  --text-color-dark: #efefef;
+  --second-color-dark: #6f767e;
+  --divider-color-dark: #272b30;
+  --secondary-color-three: #fe6d8e;
+  --secondary-color-one: #fd8539;
+  --secondary-color-two: #2ed840;
+  --secondary-color-four: rgba(0, 143, 251, 0.85);
+}
