@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
-import Header from "../../components/Header/Header";
-import "./Property.css";
-import { Dropdown, DropdownButton } from "react-bootstrap";
 import axios from "axios";
-import { SlLocationPin } from "react-icons/sl"
+import React, { useEffect, useState } from "react";
+import { Dropdown, DropdownButton } from "react-bootstrap";
 import { BiSolidCheckCircle } from "react-icons/bi";
+import { SlLocationPin } from "react-icons/sl";
+import Header from "../../components/Header/Header";
 import Pagination from "../../components/Pagination/Pagination";
+import "./Property.css";
 
 const Property = () => {
   const [category, setCategory] = useState();
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(4);
+  // const [colors, setAddColors]=useState();
+  let arr = ["#475BE8", "#FD8539", "#2ED480", "#FE6D8E"]
 
   useEffect(() => {
     const apiUrl = "/api";
@@ -102,6 +104,7 @@ const Property = () => {
         visitedPolygons: [],
         visitedProjects: [],
       },
+
     };
 
     axios
@@ -112,6 +115,7 @@ const Property = () => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
+    setData({ ...data, color: arr })
   }, []);
   const lastPostIndex = currentPage * postPerPage;
   const firstPostIndex = lastPostIndex - postPerPage;
@@ -119,10 +123,13 @@ const Property = () => {
   const currentPost = data?.data?.audienceMaximizerProperties?.properties?.slice(firstPostIndex, lastPostIndex);
 
   console.log(data)
-  console.log(currentPage)
+
   function handleSelect(e) {
     setCategory(e);
+    console.log("working!!")
   }
+  console.log(category)
+
   return (
     <>
       <section className="main-layout">
@@ -212,7 +219,7 @@ const Property = () => {
                     </Dropdown.Item>
                   </DropdownButton>
                 </div>
-                <div className="col-2">
+                {/* <div className="col-2">
                   <DropdownButton
                     className="propertylist-page-dropdown"
                     width="100%"
@@ -327,17 +334,17 @@ const Property = () => {
                       One Week
                     </Dropdown.Item>
                   </DropdownButton>
-                </div>
+                </div> */}
               </div>
               <div className="property-item">
                 <div
                   className="row"
-                  style={{ height: "90vh"}}
+                  style={{ height: "90vh" }}
                 >
                   {currentPost?.map(
                     (item, index) => {
                       return (
-                        <div className="w-50 col-lg-4">
+                        <div className="w-50 col-lg-4" key={index}>
                           <div className="team-card">
                             <div className="right-info">
                               {
@@ -363,6 +370,7 @@ const Property = () => {
                                       height: "140px",
                                       objectFit: "cover",
                                       borderRadius: "10px",
+
                                     }}
                                   />
                               }

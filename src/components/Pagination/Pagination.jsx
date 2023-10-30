@@ -27,10 +27,9 @@ const Pagination = ({ totalPost, postsPerPage, setCurrentPage, currentPage }) =>
         }
 
     }
-    console.log(pages)
     return (
         <>
-            <NavLink style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', cursor: 'not-allowed' }}>
+            <NavLink style={{height:'200px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', cursor: 'not-allowed'}}>
                 {
                     currentPage > 1 ? <Button className="btn btn-info" onClick={() => { previousPage() }}>Previous Page</Button> :
                         <Button className="btn btn-secondary" onClick={() => { previousPage() }} disabled>Previous Page</Button>
@@ -40,7 +39,7 @@ const Pagination = ({ totalPost, postsPerPage, setCurrentPage, currentPage }) =>
                     pages.map((page, index) => {
                         if (page < maxpageNumberLimit + 1 && page > minpageNumberLimit) {
                             return (
-                                page == currentPage ? <Button className="btn btn-dark" onClick={() => setCurrentPage(page)}>{page}</Button> : <Button className="btn btn-info" onClick={() => setCurrentPage(page)}>{page}</Button>
+                                page == currentPage ? <Button className="btn btn-dark" key={index} onClick={() => setCurrentPage(page)}>{page}</Button> : <Button className="btn btn-info" key={index} onClick={() => setCurrentPage(page)}>{page}</Button>
                             )
                         }
                         else {

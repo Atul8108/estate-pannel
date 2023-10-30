@@ -17,15 +17,20 @@ const ProgressBar = ({ series }) => {
                 reset: false,
               },
             },
-            fill: {
-              colors: [
-                "var(--secondary-color-three)",
-                "var(--second-text-color)",
-              ],
+            // fill: {
+            //   colors: [
+            //     "var(--secondary-color-three,--primary-color)",
+            //     "var(--second-text-color)",
+            //   ],
+            // },
+            plotOptions: {
+              radialBar: {
+                distributed: true
+              },
             },
             colors: [
-              "var(--secondary-color-three ,--primary-color)",
-              "var(--second-text-color)",
+              "#FD8539",
+              "#2ED480"
             ],
             dataLabels: {
               enabled: false,

@@ -31,7 +31,7 @@ const Dashboard = () => {
                         <h3>1,200</h3>
                       </div>
                       <div className="property-card-left">
-                        <ProgressBar />
+                        <ProgressBar  />
                       </div>
                     </div>
                   </div>
