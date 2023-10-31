@@ -5,24 +5,49 @@ import "./Header.css";
 import ThemeChanger from '../ThemeChanger/ThemeChanger';
 
 const Header = () => {
+
   const [isDark, setIsDark] = useState(false);
-  useEffect(() => {
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme) {
-      setIsDark(storedTheme === 'dark');
-    }
-  }, []);
-
-
-  useEffect(() => {
-    let htmlEle = document.querySelector(':root');
-    htmlEle.setAttribute("data-theme", isDark ? "dark" : "light");
-  }, [isDark])
 
   const toggleTheme = () => {
     setIsDark(!isDark);
     localStorage.setItem('theme', isDark ? 'light' : 'dark')
   };
+  useEffect(() => {
+    let htmlEle = document.querySelector(':root');
+    htmlEle.setAttribute("data-theme", isDark ? "dark" : "light");
+  }, [isDark])
+  
+  useEffect(() => {
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme=='dark') {
+      setIsDark(storedTheme == 'dark');
+    }
+  }, []);
+  
+  // useEffect(() => {
+  //   let htmlEle = document.querySelector(':root');
+  //   htmlEle.setAttribute("cloak", isDark ? "dark" : "light");
+  
+  //   // Set the `isDark` state after a slight delay
+  //   setTimeout(() => {
+  //     setIsDark(!isDark);
+  //   }, 100);
+  // }, [isDark]);
+  
+  // const toggleTheme = () => {
+  //   setIsDark(!isDark);
+  //   localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  // };
+  
+  // useEffect(() => {
+  //   const storedTheme = localStorage.getItem('theme');
+  //   if (storedTheme === 'dark') {
+  //     setIsDark(storedTheme === 'dark');
+  //   }
+  // }, []);
+ 
+
+ 
   return (
     <>
       <SideMenuBar />

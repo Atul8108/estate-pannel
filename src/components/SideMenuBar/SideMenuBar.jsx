@@ -1,34 +1,35 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { AiOutlineStar } from "react-icons/ai";
 import { BiMessageDetail } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlinePeople } from "react-icons/md";
 import { PiBuildingsBold } from "react-icons/pi";
 import { RxDashboard } from "react-icons/rx";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useMatch } from "react-router-dom";
+import darklogo from "../../assets/images/darklogo.svg";
 import logo from "../../assets/images/logo.svg";
-import darklogo from "../../assets/images/darklogo.svg"
 import "./SideMenuBar.css";
 
 const SideMenuBar = () => {
-  const theme= localStorage.getItem("theme")
+  const theme = localStorage.getItem("theme");
+  const match = useLocation();
   return (
     <>
       <div className="side-menu-bar">
         <div className="side-menu-item">
           <div className="logo">
-          {
-            theme == "light" ? <img src={logo} alt="logo" />:
-            <img src={darklogo} alt="logo" />
-          }
-           
+            {
+              theme == "light" ? <img src={logo} alt="logo" /> :
+                <img src={darklogo} alt="logo" />
+            }
+
           </div>
           <nav className="menu-items">
             <NavLink
               to="/dashboard"
               className="nav_item"
               style={({ isActive }) => ({
-                backgroundColor: isActive
+                backgroundColor: (isActive)
                   ? "var(--primary-color)"
                   : "var(--white-color)",
                 color: isActive
@@ -36,7 +37,7 @@ const SideMenuBar = () => {
                   : "var(--second-text-color)",
               })}
             >
-              <RxDashboard  />
+              <RxDashboard />
               &nbsp;Dashboard
             </NavLink>
             <NavLink
@@ -58,12 +59,12 @@ const SideMenuBar = () => {
               to="/agent"
               className="nav_item"
               style={({ isActive }) => ({
-                backgroundColor: isActive
+                backgroundColor: (isActive || match?.pathname.includes("agent"))
                   ? "var(--primary-color)"
                   : "var(--white-color)",
-                color: isActive
+                color: (isActive || match?.pathname.includes("agent"))
                   ? "var(--white-color)"
-                  : "var(--second-text-color)",
+                  : "var(--second-text-color)"
               })}
             >
               <MdOutlinePeople />
@@ -73,7 +74,7 @@ const SideMenuBar = () => {
               to="/review"
               className="nav_item"
               style={({ isActive }) => ({
-                backgroundColor: isActive
+                backgroundColor: (isActive)
                   ? "var(--primary-color)"
                   : "var(--white-color)",
                 color: isActive
@@ -111,7 +112,7 @@ const SideMenuBar = () => {
                   : "var(--second-text-color)",
               })}
             >
-              <CgProfile/>
+              <CgProfile />
               &nbsp;My Profile
             </NavLink>
           </nav>

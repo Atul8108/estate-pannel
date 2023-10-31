@@ -12,8 +12,6 @@ const Property = () => {
   const [data, setData] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(4);
-  // const [colors, setAddColors]=useState();
-  let arr = ["#475BE8", "#FD8539", "#2ED480", "#FE6D8E"]
 
   useEffect(() => {
     const apiUrl = "/api";
@@ -115,20 +113,16 @@ const Property = () => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-    setData({ ...data, color: arr })
   }, []);
   const lastPostIndex = currentPage * postPerPage;
   const firstPostIndex = lastPostIndex - postPerPage;
 
   const currentPost = data?.data?.audienceMaximizerProperties?.properties?.slice(firstPostIndex, lastPostIndex);
 
-  console.log(data)
-
   function handleSelect(e) {
     setCategory(e);
     console.log("working!!")
   }
-  console.log(category)
 
   return (
     <>

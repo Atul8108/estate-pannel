@@ -1,0 +1,17 @@
+.myprofile-container{
+    margin-top: 30px;
+    border-radius: 8px;
+    height: 60%;
+  background-color: var(--white-color);
+}
+.right-img-container{
+    width: 40%;
+    height: 100%;
+    padding: 20px;
+}
+
+.right-img-container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
