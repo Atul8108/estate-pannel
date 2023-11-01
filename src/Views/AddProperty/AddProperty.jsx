@@ -7,7 +7,6 @@ import { Dropdown, DropdownButton } from 'react-bootstrap'
 const AddProperty = () => {
     const [category, setCategory] = useState();
     const [propertyDetails , setPropertyDetails] = useState([]);
-
     function handleSelect(e) {
         setCategory(e);
 
@@ -28,8 +27,10 @@ const AddProperty = () => {
         }
 
         setPropertyDetails(...propertyDetails,propertyInfo)
-        localStorage.setItem("PropertyDetails",propertyDetails )
-        console.log(propertyInfo)
+        console.log(propertyDetails)
+        localStorage.setItem("PropertyDetails",JSON.stringify(propertyDetails) )
+        console.log(propertyDetails)
+
         propertyName.value =null;
         propertyDescription.value=null;
         setCategory()
