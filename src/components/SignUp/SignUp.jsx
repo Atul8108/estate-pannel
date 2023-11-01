@@ -29,7 +29,7 @@ const SignUp = () => {
               />
               <div className="check-box-field">
                 <input type="checkbox" />
-                <label style={{ width: "300px" }}>Remember for 30 days</label>
+                <label style={{ width: "230px" }}>Remember for 30 days</label>
                 <p style={{ width: "115px" }}>Forgot Password ?</p>
               </div>
               <button className="btn-primary">Sign in</button>
@@ -42,9 +42,9 @@ const SignUp = () => {
                 Sign in with Google
               </button>
               <p
-                style={{ marginTop: "30px", color: "var(--second-text-color)" }}
+              style={{ color: "var(--second-text-color)", marginTop:"30px !important"}}
               >
-                Already have an account? <Link to="/sign-in" >Sign in</Link>
+                Already have an account? <Link to="/sign-in" style={{textDecoration:"none"}} >Sign in</Link>
               </p>
             </div>
           </div>

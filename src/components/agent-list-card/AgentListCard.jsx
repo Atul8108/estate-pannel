@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { BsBuildingFillCheck, BsFillTelephoneFill, BsThreeDots } from 'react-icons/bs'
 import { MdEmail, MdLocationOn } from 'react-icons/md'
 import agent4 from "../../assets/images/profileImage/ImageAgent 4.svg"
@@ -9,98 +9,99 @@ import agent1 from "../../assets/images/profileImage/agent1.svg"
 import { Link } from 'react-router-dom'
 
 
-let agentDetails = [
-  {
-    name: "Karen Eilla Boyette",
-    agentType: "Real-Estate Agent",
-    email: "kareneboyette@armyspy.com",
-    phonenumber: "+5023244194",
-    location: "Manchester",
-    numberOfProperty: 10,
-    img:agent2,
-    agentId:1
-  },
-  {
-    name: "Walter Devid Moye",
-    agentType: "Real-Estate Agent",
-    email: "walterdevidmoye@armyspy.com",
-    phonenumber: "+4573244147",
-    location: "Chicago, Canada",
-    numberOfProperty: 10,
-    img:agent3,
-    agentId:3
-  },
-  {
-    name: "David Smith Raddy",
-    agentType: "Real-Estate Agent",
-    email: "kareneboyette@armyspy.com",
-    phonenumber: "+5843247835",
-    location: "Manchester",
-    numberOfProperty: 11,
-    img:agent4,
-    agentId:5
-  },
-  {
-    name: "Devid Moye",
-    agentType: "Real-Estate Agent",
-    email: "walterdevidmoye@armyspy.com",
-    phonenumber: "+4573244147",
-    location: "Chicago, Canada",
-    numberOfProperty: 20,
-    img:agent5,
-    agentId:111
-  },
-  {
-    name: "Boyette Devid Moye",
-    agentType: "Real-Estate Agent",
-    email: "walteoye@armyspy.com",
-    phonenumber: "+4573244147",
-    location: "Chicago, Canada",
-    numberOfProperty: 50,
-    img:agent1,
-    agentId:8
-  },
-  {
-    name: "Moye",
-    agentType: "Real-Estate Agent",
-    email: "walteoye@armyspy.com",
-    phonenumber: "+4573244147",
-    location: "Chicago, Canada",
-    numberOfProperty: 50,
-    img:agent3,
-    agentId:13
-  },
-  {
-    name: "Walter Devid Moye",
-    agentType: "Real-Estate Agent",
-    email: "walterdevidmoye@armyspy.com",
-    phonenumber: "+4573244147",
-    location: "Chicago, Canada",
-    numberOfProperty: 10,
-    img:agent1,
-    agentId:17
-  },
-  {
-    name: "David Smith Raddy",
-    agentType: "Real-Estate Agent",
-    email: "kareneboyette@armyspy.com",
-    phonenumber: "+5843247835",
-    location: "Manchester",
-    numberOfProperty: 11,
-    img:agent3,
-    agentId:12
-  }
-]
 
-console.log(agentDetails)
 
 
 const AgentListCard = () => {
+  const [data, setData] = useState([
+    {
+      name: "Karen Eilla Boyette",
+      agentType: "Real-Estate Agent",
+      email: "kareneboyette@armyspy.com",
+      phonenumber: "+5023244194",
+      location: "Manchester",
+      numberOfProperty: 10,
+      img:agent2,
+      agentId:1
+    },
+    {
+      name: "Walter Devid Moye",
+      agentType: "Real-Estate Agent",
+      email: "walterdevidmoye@armyspy.com",
+      phonenumber: "+4573244147",
+      location: "Chicago, Canada",
+      numberOfProperty: 10,
+      img:agent3,
+      agentId:3
+    },
+    {
+      name: "David Smith Raddy",
+      agentType: "Real-Estate Agent",
+      email: "kareneboyette@armyspy.com",
+      phonenumber: "+5843247835",
+      location: "Manchester",
+      numberOfProperty: 11,
+      img:agent4,
+      agentId:5
+    },
+    {
+      name: "Devid Moye",
+      agentType: "Real-Estate Agent",
+      email: "walterdevidmoye@armyspy.com",
+      phonenumber: "+4573244147",
+      location: "Chicago, Canada",
+      numberOfProperty: 20,
+      img:agent5,
+      agentId:111
+    },
+    {
+      name: "Boyette Devid Moye",
+      agentType: "Real-Estate Agent",
+      email: "walteoye@armyspy.com",
+      phonenumber: "+4573244147",
+      location: "Chicago, Canada",
+      numberOfProperty: 50,
+      img:agent1,
+      agentId:8
+    },
+    {
+      name: "Moye",
+      agentType: "Real-Estate Agent",
+      email: "walteoye@armyspy.com",
+      phonenumber: "+4573244147",
+      location: "Chicago, Canada",
+      numberOfProperty: 50,
+      img:agent3,
+      agentId:13
+    },
+    {
+      name: "Walter Devid Moye",
+      agentType: "Real-Estate Agent",
+      email: "walterdevidmoye@armyspy.com",
+      phonenumber: "+4573244147",
+      location: "Chicago, Canada",
+      numberOfProperty: 10,
+      img:agent1,
+      agentId:17
+    },
+    {
+      name: "David Smith Raddy",
+      agentType: "Real-Estate Agent",
+      email: "kareneboyette@armyspy.com",
+      phonenumber: "+5843247835",
+      location: "Manchester",
+      numberOfProperty: 11,
+      img:agent3,
+      agentId:12
+    }
+  ])
+  localStorage.setItem("agentData",JSON.stringify(data))
+
   return (
     <>
 
       {
-        agentDetails?.map((item, index) => {
+        data?.map((item, index) => {
           return (
             <Link key={item.agentId} to={"/agent/details/" + item?.agentId} style={{ textDecoration: "none" }}>
               <div className="agent-list-card">

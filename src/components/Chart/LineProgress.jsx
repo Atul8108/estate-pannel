@@ -16,7 +16,7 @@ const LineProgress = () => {
               className="progress-bar-fill"
               style={{
                 width: " 75%",
-                backgroundColor: "var(--secondary-color-four)",
+                backgroundColor: "var(--secondary-color-three)",
                 borderRadius: "10px",
               }}
             ></div>
@@ -32,7 +32,7 @@ const LineProgress = () => {
               className="progress-bar-fill"
               style={{
                 width: " 45%",
-                backgroundColor: "var(--secondary-color-four)",
+                backgroundColor: "var(--secondary-color-one)",
                 borderRadius: "10px",
               }}
             ></div>
@@ -65,7 +65,7 @@ const LineProgress = () => {
               className="progress-bar-fill"
               style={{
                 width: " 25%",
-                backgroundColor: "var(--secondary-color-four)",
+                backgroundColor: "var(--secondary-color-two)",
                 borderRadius: "10px",
               }}
             ></div>
@@ -81,7 +81,7 @@ const LineProgress = () => {
               className="progress-bar-fill"
               style={{
                 width: " 85%",
-                backgroundColor: "var(--secondary-color-four)",
+                backgroundColor: "var(--primary-color)",
                 borderRadius: "10px",
               }}
             ></div>

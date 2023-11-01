@@ -29,8 +29,8 @@ const ProgressBar = ({ series }) => {
               },
             },
             colors: [
-              "#FD8539",
-              "#2ED480"
+              "#04C584",
+              "#047DDA"
             ],
             dataLabels: {
               enabled: false,

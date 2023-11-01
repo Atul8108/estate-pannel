@@ -9,6 +9,7 @@ import MyProfile from "./Views/MyProfile/MyProfile";
 import Review from "./Views/Review/Review";
 import Message from "./Views/Message/Message";
 import Agentdetails from "./Views/Agent/Agentdetails";
+import AddProperty from "./Views/AddProperty/AddProperty";
 
 function App() {
   return (
@@ -16,10 +17,15 @@ function App() {
       <Route exact path="/" element={<SignUp />} />
       <Route exact path="/sign-in" element={<SignIn />} />
       <Route exact path="/dashboard" element={<Dashboard />} />
-      <Route exact path="/property" element={<Property />} />
+      
       <Route exact path="/review" element={<Review />} />
       <Route exact path="/message" element={<Message />} />
       <Route exact path="/My-profile" element={<MyProfile />} />
+
+      <Route exact path="/property/">
+        <Route index  element={<Property />}/>
+        <Route path="add_property" element={<AddProperty />} />
+      </Route>
 
       <Route path="/agent/">
         <Route index element={<Agent />} />

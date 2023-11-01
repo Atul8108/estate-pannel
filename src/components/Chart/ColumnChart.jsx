@@ -4,11 +4,12 @@ import Chart from "react-apexcharts";
 const ColumnChart = () => {
   return (
     <>
-      <div style={{ width: '100%'}}>
+      <div style={{ width: '100%' }}>
         <Chart
           type="bar"
           height={550}
           width='100%'
+
           series={[
             {
               name: "sales",
@@ -110,6 +111,14 @@ const ColumnChart = () => {
               bar: {
                 columnWidth: "60%",
               },
+            },
+            stroke: {
+              show: true,
+              lineCap:"square",
+              curve: 'monotoneCubic',
+              colors: "red",
+              width: 2,
+              dashArray: 0,
             },
             chart: {
               redrawOnParentResize: true,

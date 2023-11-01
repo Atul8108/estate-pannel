@@ -1,17 +1,53 @@
-.myprofile-container{
+.myprofile-container {
+    display: flex;
     margin-top: 30px;
     border-radius: 8px;
-    height: 60%;
-  background-color: var(--white-color);
+    height: 400px;
+    background-color: var(--white-color);
 }
-.right-img-container{
+
+.right-img-container {
     width: 40%;
     height: 100%;
     padding: 20px;
 }
 
-.right-img-container img{
+.right-img-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+.right-img-container input[type=file]{
+    color:red;
+    width: 100px;
+    border: none;
+    position: relative;
+    top: -60px;
+    left: 20px;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    left: -94px;
+    top: 85px;
+
+    /* border: 1px solid white; */
+
+}
+
+.profile-img img {
+    max-width: 150px;
+    width: 150px;
+    height: 150px;
+    /* position: fixed; */
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.left-input-container {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
 }

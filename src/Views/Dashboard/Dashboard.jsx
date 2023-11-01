@@ -83,6 +83,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
+            <div className="" style={{border:"2px solid black"}}></div>
             <div className="property-list-container">
               <div className="property-list-filter-btn">
                 <div className="left-content">

@@ -6,6 +6,7 @@ import { SlLocationPin } from "react-icons/sl";
 import Header from "../../components/Header/Header";
 import Pagination from "../../components/Pagination/Pagination";
 import "./Property.css";
+import { Link } from "react-router-dom";
 
 const Property = () => {
   const [category, setCategory] = useState();
@@ -135,7 +136,9 @@ const Property = () => {
               style={{ justifyContent: "space-between", alignItems: "center" }}
             >
               <h4>Property List</h4>
-              <button className="btn btn-primary m-0">+ Add Property</button>
+              <Link to="/property/add_property">
+                <button className="btn btn-primary m-0">+ Add Property</button>
+              </Link>
             </div>
             <div className="propertylist-container">
               <div className="row" style={{ marginBottom: "30px" }}>
@@ -213,7 +216,7 @@ const Property = () => {
                     </Dropdown.Item>
                   </DropdownButton>
                 </div>
-                {/* <div className="col-2">
+                <div className="col-2">
                   <DropdownButton
                     className="propertylist-page-dropdown"
                     width="100%"
@@ -328,12 +331,12 @@ const Property = () => {
                       One Week
                     </Dropdown.Item>
                   </DropdownButton>
-                </div> */}
+                </div>
               </div>
               <div className="property-item">
                 <div
                   className="row"
-                  style={{ height: "90vh" }}
+                // style={{ height: "90vh" }}
                 >
                   {currentPost?.map(
                     (item, index) => {
@@ -383,14 +386,15 @@ const Property = () => {
                       );
                     }
                   )}
-                  <Pagination
-                    totalPost={data?.data?.audienceMaximizerProperties?.properties?.length}
-                    postsPerPage={postPerPage}
-                    setCurrentPage={setCurrentPage}
-                    currentPage={currentPage}
-                  />
+
                 </div>
               </div>
+              <Pagination
+                totalPost={data?.data?.audienceMaximizerProperties?.properties?.length}
+                postsPerPage={postPerPage}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+              />
             </div>
           </div>
         </div>
