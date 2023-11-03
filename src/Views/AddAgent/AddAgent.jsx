@@ -1,86 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import Header from '../../components/Header/Header'
-import "./AddProperty.css"
-import { Dropdown, DropdownButton } from 'react-bootstrap'
-import { PROPERTY } from '../../Api/localStorage'
-import { db } from "../../firebase"
-import { collection, addDoc } from "firebase/firestore";
-import { doc, setDoc, getDocs,onSnapshot } from "firebase/firestore";
+import React, { useState } from 'react'
+import Header from '../../components/Header/Header';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 
-const AddProperty = () => {
+const AddAgent = () => {
     const [category, setCategory] = useState();
     const [file, setFile] = useState();
-    const [data, setData] = useState()
-
-    useEffect(() => {
-        setData(JSON.parse(PROPERTY()) || [])
-    }, [])
-
-    useEffect(() => {
-        fetchData()
-    }, [])
-
-    // fetching the all data from the firebase database 
-    async function fetchData() {
-        // const snapShot = await getDocs(collection(db, "estate admin pannel"));
-
-        // const propertyList = snapShot.docs.map((doc) => {
-        //     return {
-        //         id: doc.id,
-        //         ...doc.data()
-        //     }
-        // })
-        // console.log(propertyList)
-        // setData(propertyList)
-
-        const property = await onSnapshot(collection(db ,"estate admin pannel"),(snapShot)=>{
-            const propertyList = snapShot.docs.map((doc) => {
-                    return {
-                        id: doc.id,
-                        ...doc.data()
-                    }
-                })
-                console.log(propertyList)
-                setData(propertyList)
-        }) 
-    }
-
-    async function handleSubmit() {
-        let localData = []
-        let propertyName = document.getElementById("propertyName")
-        let propertyDescription = document.getElementById("propertyDescription")
-        let propertyPrice = document.getElementById("propertyPrice")
-        let location = document.getElementById("location")
-        // let propertyInfo = {
-        //     "id": new Date().valueOf(),
-        //     "propertyName": propertyName?.value,
-        //     "propertyDescription": propertyDescription?.value,
-        //     "category": category,
-        //     "propertyPrice": "$" + propertyPrice?.value,
-        //     "location": location?.value,
-        //     "image": file
-        // }
-        // localData = [...data, propertyInfo];
-        // setData(localData)
-        // localStorage.setItem("PropertyDetails", JSON.stringify(localData))
-
-
-        // Adding data to firebase removing the localhost data 
-        const docRef = await addDoc(collection(db, "estate admin pannel"), {
-            // "id": new Date().valueOf(),
-            "propertyName": propertyName?.value,
-            "propertyDescription": propertyDescription?.value,
-            "category": category,
-            "propertyPrice": "$" + propertyPrice?.value,
-            "location": location?.value,
-            "image": file
-        });
-        propertyName.value = null;
-        propertyDescription.value = null;
-        setCategory()
-        propertyPrice.value = null;
-        location.value = null;
-    }
 
     function handleSelect(e) {
         setCategory(e);
@@ -90,13 +14,9 @@ const AddProperty = () => {
     function handleChange(e) {
         setFile(URL.createObjectURL(e.target.files[0]));
     }
-
-
-
-
-    return (
-        <>
-            <section className="main-layout">
+  return (
+    <>
+         <section className="main-layout">
                 <Header />
                 <div className='page-content'>
                     <div className="addproperty-container">
@@ -168,13 +88,13 @@ const AddProperty = () => {
                             <p>Enter Location</p>
                             <input type="text" id='location' className="text" />
                             <input type="file" id="image" className="file" onChange={handleChange} />
-                            <button className='btn btn-primary' onClick={() => { handleSubmit() }}>Submit</button>
+                            {/* <button className='btn btn-primary' onClick={() => { handleSubmit() }}>Submit</button> */}
                         </div>
                     </div>
                 </div>
             </section>
-        </>
-    )
+    </>
+  )
 }
 
-export default AddProperty
+export default AddAgent

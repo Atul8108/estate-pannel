@@ -7,7 +7,7 @@ const Agentdetails = () => {
             <section className="main-layout">
                 <Header />
                 <div className='page-content'>
-                <p>mss</p>
+                    <p>mss</p>
                 </div>
             </section>
         </>

@@ -1,18 +1,21 @@
 import React from "react";
-import "./PropertyList.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { PROPERTY } from "../../Api/localStorage";
 import image from "../../assets/images/PropertyListImage/architecture.jpg";
+import "./PropertyList.css";
 
 const PropertyList = () => {
+  let propertyList = JSON.parse(PROPERTY());
+
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 4,
+      breakpoint: { max: 5000, min: 3000 },
+      items: 5,
     },
     desktop: {
-      breakpoint: { max: 2000, min: 1024 },
+      breakpoint: { max: 3000, min: 1024 },
       items: 3,
     },
     tablet: {
@@ -26,53 +29,29 @@ const PropertyList = () => {
   };
   return (
     <>
-      <Carousel responsive={responsive}>
-        <div className="property-card">
-          <div className="image">
-            <img src={image} alt="" />
-          </div>
-          <div className="info">
-            <p>Star Sun Hotel & Apartment</p>
-            <p>Star</p>
-          </div>
-        </div>
-        <div className="property-card">
-          <div className="image">
-            <img src={image} alt="" />
-          </div>
-          <div className="info">
-            <p>Star Sun Hotel & Apartment</p>
-            <p>Star</p>
-          </div>
-        </div>
-        <div className="property-card">
-          <div className="image">
-            <img src={image} alt="" />
-          </div>
-          <div className="info">
-            <p>Star Sun Hotel & Apartment</p>
-            <p>Star</p>
-          </div>
-        </div>
-        <div className="property-card">
-          <div className="image">
-            <img src={image} alt="" />
-          </div>
-          <div className="info">
-            <p>Star Sun Hotel & Apartment</p>
-            <p>Star</p>
-          </div>
-        </div>
-        <div className="property-card">
-          <div className="image">
-            <img src={image} alt="" />
-          </div>
-          <div className="info">
-            <p>Star Sun Hotel & Apartment</p>
-            <p>Star</p>
-          </div>
-        </div>
-      </Carousel>
+    {
+      propertyList?.length ?<Carousel responsive={responsive}
+        autoPlay={true}
+        swipeable={true}
+        infinite={true}
+      >
+        {
+          propertyList?.map((item, index) => {
+            return (
+              <div className="property-card" key={item?.id}>
+                <div className="image">
+                  <img src={image} alt={item?.propertyName} />
+                </div>
+                <div className="info">
+                  <p>{item?.propertyName}</p>
+                  <p>{item?.propertyPrice}</p>
+                </div>
+              </div>
+            )
+          })
+        }
+      </Carousel> :<p>no data found</p>
+    }
     </>
   );
 };

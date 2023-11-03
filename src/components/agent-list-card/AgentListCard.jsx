@@ -9,9 +9,6 @@ import agent1 from "../../assets/images/profileImage/agent1.svg"
 import { Link } from 'react-router-dom'
 
 
-
-
-
 const AgentListCard = () => {
   const [data, setData] = useState([
     {
@@ -95,8 +92,11 @@ const AgentListCard = () => {
       agentId:12
     }
   ])
-  localStorage.setItem("agentData",JSON.stringify(data))
 
+
+  
+  localStorage.setItem("agentData",JSON.stringify(data))
+  console.log(data)
   return (
     <>
 

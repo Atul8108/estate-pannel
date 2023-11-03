@@ -10,7 +10,7 @@ const SignIn = () => {
     if (e.KeyCode=== 13) {
       const form = e.target.form;
       const index = Array.prototype.indexOf.call(form, e.target)
-      const lastIndex = form.elements.length-1;
+      const lastIndex = form.elements?.length-1;
       if(index === lastIndex){
         // handleSubmit();
       }

@@ -49,7 +49,7 @@ const Pagination = ({ totalPost, postsPerPage, setCurrentPage, currentPage }) =>
                     })
                 }
                 {
-                    currentPage < pages.length ? <Button className="btn btn-info" onClick={() => { nextPage() }}>Next Page</Button> :
+                    currentPage < pages?.length ? <Button className="btn btn-info" onClick={() => { nextPage() }}>Next Page</Button> :
                         <Button className="btn btn-secondary" onClick={() => { nextPage() }} disabled>Next Page</Button>
                 }
             </NavLink>

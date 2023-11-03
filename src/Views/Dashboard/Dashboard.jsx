@@ -14,6 +14,8 @@ const Dashboard = () => {
     setCategory(e);
   }
 
+
+
   return (
     <>
       <section className="main-layout">
@@ -31,7 +33,7 @@ const Dashboard = () => {
                         <h3>1,200</h3>
                       </div>
                       <div className="property-card-left">
-                        <ProgressBar  />
+                        <ProgressBar />
                       </div>
                     </div>
                   </div>
@@ -83,7 +85,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="" style={{border:"2px solid black"}}></div>
+            {/* <div className="" style={{ border: "2px solid black" }}></div> */}
             <div className="property-list-container">
               <div className="property-list-filter-btn">
                 <div className="left-content">
@@ -127,7 +129,9 @@ const Dashboard = () => {
                 </div>
               </div>
               <div className="view-property-container">
-                <PropertyList/>
+                <div style={{ width: "100%" }}>
+                  <PropertyList />
+                </div>
               </div>
             </div>
           </div>

@@ -7,118 +7,138 @@ import Header from "../../components/Header/Header";
 import Pagination from "../../components/Pagination/Pagination";
 import "./Property.css";
 import { Link } from "react-router-dom";
+import { PROPERTY } from "../../Api/localStorage";
+import { db } from "../../firebase"
+import { collection, addDoc } from "firebase/firestore";
+import { doc, setDoc, getDocs, onSnapshot } from "firebase/firestore";
 
 const Property = () => {
   const [category, setCategory] = useState();
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostPerPage] = useState(4);
+  const [postPerPage, setPostPerPage] = useState(8);
 
   useEffect(() => {
-    const apiUrl = "/api";
+    fetchData()
+  }, [])
 
-    const graphqlQuery = {
-      query: `
-        fragment PR on Property {
-          coverImage {
-            src
-            alt
-            videoUrl
-          }
-          propertyType
-          listingId
-          title
-          subtitle
-          isActiveProperty
-          displayPrice {
-            value
-            displayValue
-            unit
-            deposit
-          }
-          address {
-            address
-            url
-            detailedPropertyAddress {
-              url
-              val
-            }
-            distanceFromEntity
-          }
-          url
-          promotions
-          coords
-          tags
-          meta
-          brands {
-            name
-          }
-          sellers {
-            ...BS
-            phone {
-              partialValue
-            }
-          }
+  // fetching the all data from the firebase database 
+  async function fetchData() {
+    const property = await onSnapshot(collection(db, "estate admin pannel"), (snapShot) => {
+      const propertyList = snapShot.docs.map((doc) => {
+        return {
+          id: doc.id,
+          ...doc.data()
         }
-        fragment BS on User {
-          name
-          id
-          image
-          firmName
-          url
-          type
-          isPrime
-          isPaid
-          designation
-        }
-        query(
-          $cityId: String
-          $poly: String
-          $visitedPolygons: [String]
-          $visitedProjects: [String]
-        ) {
-          audienceMaximizerProperties(
-            cityId: $cityId
-            poly: $poly
-            visitedPolygons: $visitedPolygons
-            visitedProjects: $visitedProjects
-          ) {
-            totalCount
-            properties {
-              ...PR
-              updatedAt
-              socialUrgency {
-                msg
-              }
-              socialContext {
-                msg
-              }
-            }
-          }
-        }
-      `,
-      variables: {
-        cityId: "90d5af399d7256af0694",
-        poly: "cfd49c20e16ab8f21a81",
-        visitedPolygons: [],
-        visitedProjects: [],
-      },
-
-    };
-
-    axios
-      .post(apiUrl, graphqlQuery)
-      .then((response) => {
-        setData(response.data);
       })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
+      console.log(propertyList)
+      setData(propertyList)
+    })
+  }
+  // useEffect(() => {
+  //   const apiUrl = "/api";
+
+  //   const graphqlQuery = {
+  //     query: `
+  //       fragment PR on Property {
+  //         coverImage {
+  //           src
+  //           alt
+  //           videoUrl
+  //         }
+  //         propertyType
+  //         listingId
+  //         title
+  //         subtitle
+  //         isActiveProperty
+  //         displayPrice {
+  //           value
+  //           displayValue
+  //           unit
+  //           deposit
+  //         }
+  //         address {
+  //           address
+  //           url
+  //           detailedPropertyAddress {
+  //             url
+  //             val
+  //           }
+  //           distanceFromEntity
+  //         }
+  //         url
+  //         promotions
+  //         coords
+  //         tags
+  //         meta
+  //         brands {
+  //           name
+  //         }
+  //         sellers {
+  //           ...BS
+  //           phone {
+  //             partialValue
+  //           }
+  //         }
+  //       }
+  //       fragment BS on User {
+  //         name
+  //         id
+  //         image
+  //         firmName
+  //         url
+  //         type
+  //         isPrime
+  //         isPaid
+  //         designation
+  //       }
+  //       query(
+  //         $cityId: String
+  //         $poly: String
+  //         $visitedPolygons: [String]
+  //         $visitedProjects: [String]
+  //       ) {
+  //         audienceMaximizerProperties(
+  //           cityId: $cityId
+  //           poly: $poly
+  //           visitedPolygons: $visitedPolygons
+  //           visitedProjects: $visitedProjects
+  //         ) {
+  //           totalCount
+  //           properties {
+  //             ...PR
+  //             updatedAt
+  //             socialUrgency {
+  //               msg
+  //             }
+  //             socialContext {
+  //               msg
+  //             }
+  //           }
+  //         }
+  //       }
+  //     `,
+  //     variables: {
+  //       cityId: "90d5af399d7256af0694",
+  //       poly: "cfd49c20e16ab8f21a81",
+  //       visitedPolygons: [],
+  //       visitedProjects: [],
+  //     },
+
+  //   };
+
+  //   axios
+  //     .post(apiUrl, graphqlQuery)
+  //     .then((response) => {
+  //       setData(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching data:", error);
+  //     });
+  // }, []);
   const lastPostIndex = currentPage * postPerPage;
   const firstPostIndex = lastPostIndex - postPerPage;
-
-  const currentPost = data?.data?.audienceMaximizerProperties?.properties?.slice(firstPostIndex, lastPostIndex);
+  const currentPost = data?.slice(firstPostIndex, lastPostIndex);
 
   function handleSelect(e) {
     setCategory(e);
@@ -187,7 +207,7 @@ const Property = () => {
                     </button>
                   </form>
                 </div>
-                <div className="col-2">
+                {/* <div className="col-2">
                   <DropdownButton
                     className="propertylist-page-dropdown"
                     width="100%"
@@ -331,8 +351,9 @@ const Property = () => {
                       One Week
                     </Dropdown.Item>
                   </DropdownButton>
-                </div>
+                </div> */}
               </div>
+
               <div className="property-item">
                 <div
                   className="row"
@@ -345,9 +366,13 @@ const Property = () => {
                           <div className="team-card">
                             <div className="right-info">
                               {
-                                item?.coverImage == null ? <img
-                                  src={item?.title}
-                                  alt={item?.coverImage.alt}
+                                <img
+                                  src={item?.image}
+                                  alt={item?.propertyName}
+                                  onError={({ currentTarget }) => {
+                                    currentTarget.onerror = null;
+                                    currentTarget.src = "https://media.istockphoto.com/id/1411304340/photo/two-modern-buildings-with-glass-windows-architecture-design-of-buildings-office-space-houses.jpg?s=1024x1024&w=is&k=20&c=X00czG-Ij796TcbNr35aMv3m7oXkIJ5h0L7VN5q_BPA=";
+                                  }}
                                   style={{
                                     width: "100%",
                                     maxWidth: "250px",
@@ -356,28 +381,15 @@ const Property = () => {
                                     objectFit: "cover",
                                     borderRadius: "10px",
                                   }}
-                                /> :
-                                  <img
-                                    src="https://media.istockphoto.com/id/1411304340/photo/two-modern-buildings-with-glass-windows-architecture-design-of-buildings-office-space-houses.jpg?s=1024x1024&w=is&k=20&c=X00czG-Ij796TcbNr35aMv3m7oXkIJ5h0L7VN5q_BPA="
-                                    alt={index}
-                                    style={{
-                                      width: "100%",
-                                      maxWidth: "250px",
-                                      minWidth: "50px",
-                                      height: "140px",
-                                      objectFit: "cover",
-                                      borderRadius: "10px",
-
-                                    }}
-                                  />
+                                />
                               }
                             </div>
                             <div className="left-info">
-                              <p style={{ fontWeight: 500 }}>{item?.displayPrice?.displayValue}</p>
-                              <p style={{ fontWeight: 800 }}>{item?.title}</p>
-                              <p style={{ fontWeight: 300 }}><SlLocationPin />{item?.meta?.selectedCity?.name}</p>
+                              <p style={{ fontSize: "15px", fontWeight: 800, width: "fit-content", padding: "10px", backgroundColor: "var(--secondary-color)", color: "#475BE8", borderRadius: "12px" }}>{item?.propertyPrice}</p>
+                              <p style={{ fontWeight: 800 }}>{item?.propertyName}</p>
+                              <p style={{ fontWeight: 300 }}><SlLocationPin />{item?.location}</p>
                               {
-                                item.tags.length ? <p style={{ fontWeight: 300 }}><BiSolidCheckCircle />{item?.tags}</p> : <p style={{ fontWeight: 300 }}>not verified</p>
+                                item.tags ? <p style={{ fontWeight: 300 }}><BiSolidCheckCircle />{item?.tags}</p> : <p style={{ fontWeight: 300 }}>not verified</p>
                               }
 
                             </div>
@@ -390,7 +402,7 @@ const Property = () => {
                 </div>
               </div>
               <Pagination
-                totalPost={data?.data?.audienceMaximizerProperties?.properties?.length}
+                totalPost={data?.length}
                 postsPerPage={postPerPage}
                 setCurrentPage={setCurrentPage}
                 currentPage={currentPage}

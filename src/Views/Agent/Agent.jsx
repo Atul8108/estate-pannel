@@ -15,7 +15,7 @@ const Agent = () => {
               style={{ justifyContent: "space-between", alignItems: "center", marginBottom: "25px" }}
             >
               <h3>Agents List</h3>
-              <button className="btn btn-primary m-0">+ Add Property</button>
+              <button className="btn btn-primary m-0">+ Add Agent</button>
             </div>
            <AgentListCard/>
           </div>
