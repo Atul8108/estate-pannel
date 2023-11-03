@@ -6,20 +6,6 @@ import google_logo from "../../assets/images/Google__Logo.svg";
 import { Link } from "react-router-dom";
 
 const SignIn = () => {
-  function handleEntry(e){
-    if (e.KeyCode=== 13) {
-      const form = e.target.form;
-      const index = Array.prototype.indexOf.call(form, e.target)
-      const lastIndex = form.elements?.length-1;
-      if(index === lastIndex){
-        // handleSubmit();
-      }
-      else{
-        form.elements[index + 1].focus();
-      }
-      e.preventDefault();
-    }
-  }
   return (
     <>
       <div className="signUp-container">
@@ -29,7 +15,7 @@ const SignIn = () => {
             <p style={{ color: "var(--second-text-color)" }}>
               Welcome back! Please enter your details. ✨
             </p>
-            <form action="" onKeyDown={(e)=>{handleEntry(e)}}></form>
+            <form action=""></form>
             <div className="sign-up-form-inputs">
               <label>Email</label>
               <input
@@ -49,7 +35,15 @@ const SignIn = () => {
                 <p style={{ width: "115px" }}>Forgot Password ?</p>
               </div>
               <button className="btn-primary">
-                <Link  to="/dashboard" style={{textDecoration:"none" , color:"var(----white-color)"}}>Login</Link>
+                <Link
+                  to="/dashboard"
+                  style={{
+                    textDecoration: "none",
+                    color: "var(----white-color)",
+                  }}
+                >
+                  Login
+                </Link>
               </button>
               <button className="btn-white">
                 <img
@@ -62,7 +56,10 @@ const SignIn = () => {
               <p
                 style={{ marginTop: "30px", color: "var(--second-text-color)" }}
               >
-                Don’t have an account?<Link to="/" style={{textDecoration:"none"}} >Sign up</Link>{" "}
+                Don’t have an account?
+                <Link to="/" style={{ textDecoration: "none" }}>
+                  Sign up
+                </Link>{" "}
               </p>
             </div>
           </div>

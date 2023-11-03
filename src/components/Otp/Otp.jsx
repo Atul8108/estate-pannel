@@ -1,20 +1,19 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../SignUp/SignUp.css";
 import "../../index.css";
 import signUp_img from "../../assets/images/signup-form-img.svg";
 import google_logo from "../../assets/images/Google__Logo.svg";
-import OTPInput from 'react-otp-input';
-import "./Otp.css"
-import { CgSpinner } from "react-icons/cg"
+import OTPInput from "react-otp-input";
+import "./Otp.css";
+import { CgSpinner } from "react-icons/cg";
 
 const Otp = () => {
-    const [otp, setOtp] = useState('');
-    return (
-        <>
-            <div className="signUp-container">
-                <div className="sign-up-form">
-                    <div className="sign-up-form-container">
+  return (
+    <>
+      <div className="signUp-container">
+        <div className="sign-up-form">
+          {/* <div className="sign-up-form-container">
                         <h2>Welcome User</h2>
                         <p style={{ color: "var(--second-text-color)" }}>
                             Please enter your OTP here. ✨
@@ -38,23 +37,16 @@ const Otp = () => {
                                     Verify OTP
                                 </div>
                             </button>
-                            {/* <button className="btn-white">
-                                <img
-                                    src={google_logo}
-                                    alt="google"
-                                    style={{ marginRight: "5px" }}
-                                />
-                                Sign in with Google
-                            </button> */}
+                            
                         </div>
-                    </div>
-                </div>
-                <div className="image-container">
-                    <img src={signUp_img} alt="signUp" />
-                </div>
-            </div>
-        </>
-    )
-}
+                    </div> */}
+        </div>
+        <div className="image-container">
+          <img src={signUp_img} alt="signUp" />
+        </div>
+      </div>
+    </>
+  );
+};
 
-export default Otp
+export default Otp;
